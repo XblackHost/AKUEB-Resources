@@ -4,6 +4,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { AdminProvider } from "@/contexts/AdminContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { AdBlockerCheck } from "@/components/layout/AdBlockerCheck";
 
@@ -13,6 +15,7 @@ import Subjects from "@/pages/Subjects";
 import Materials from "@/pages/Materials";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import AdminLogin from "@/pages/AdminLogin";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,7 @@ function Router() {
           <Route path="/subjects/:subjectId/materials" component={Materials} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/admin/login" component={AdminLogin} />
           <Route component={NotFound} />
         </Switch>
       </main>
@@ -39,14 +43,18 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <TooltipProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
-          <Toaster />
-        </TooltipProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AdminProvider>
+          <AuthProvider>
+            <TooltipProvider>
+              <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                <Router />
+              </WouterRouter>
+              <Toaster />
+            </TooltipProvider>
+          </AuthProvider>
+        </AdminProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

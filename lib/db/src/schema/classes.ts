@@ -23,6 +23,7 @@ export const materialsTable = pgTable("materials", {
   type: text("type").notNull(),
   subjectId: integer("subject_id").notNull().references(() => subjectsTable.id),
   url: text("url"),
+  objectPath: text("object_path"),
   description: text("description"),
 });
 

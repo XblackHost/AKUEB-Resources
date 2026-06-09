@@ -88,25 +88,27 @@
 }
 
 .dark {
-  /* No dark mode needed per requirements, fallback to light or dark green */
-  --background: 160 30% 10%;
-  --foreground: 160 20% 90%;
+  --background: 160 25% 8%;
+  --foreground: 160 10% 93%;
   --border: 160 20% 20%;
-  --card: 160 30% 12%;
-  --card-foreground: 160 20% 90%;
+  --card: 160 25% 12%;
+  --card-foreground: 160 10% 93%;
   --card-border: 160 20% 20%;
-  --primary: 156 60% 40%;
-  --primary-foreground: 160 30% 10%;
-  --secondary: 160 20% 20%;
-  --secondary-foreground: 160 20% 90%;
-  --muted: 160 20% 15%;
-  --muted-foreground: 160 10% 60%;
-  --accent: 156 40% 20%;
-  --accent-foreground: 156 60% 40%;
-  --destructive: 0 62% 30%;
-  --destructive-foreground: 160 20% 90%;
+  --popover: 160 25% 12%;
+  --popover-foreground: 160 10% 93%;
+  --popover-border: 160 20% 20%;
+  --primary: 156 60% 45%;
+  --primary-foreground: 160 30% 8%;
+  --secondary: 160 20% 18%;
+  --secondary-foreground: 160 10% 90%;
+  --muted: 160 20% 16%;
+  --muted-foreground: 160 10% 55%;
+  --accent: 160 20% 18%;
+  --accent-foreground: 160 10% 90%;
+  --destructive: 0 62% 55%;
+  --destructive-foreground: 0 0% 98%;
   --input: 160 20% 20%;
-  --ring: 156 60% 40%;
+  --ring: 156 60% 45%;
 }
 
 @layer base {

@@ -1,11 +1,13 @@
 import { Link } from "wouter";
-import { BookOpen, LogOut, User as UserIcon } from "lucide-react";
+import { BookOpen, LogOut, User as UserIcon, Moon, Sun } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "@workspace/api-client-react";
 
 export function Navbar() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const logoutMutation = useLogout({
     mutation: {
       onSuccess: () => {
@@ -32,6 +34,10 @@ export function Navbar() {
           </Link>
           
           <div className="h-4 w-px bg-border mx-2" />
+
+          <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-muted-foreground hover:text-foreground">
+            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </Button>
 
           {user ? (
             <div className="flex items-center gap-3">
