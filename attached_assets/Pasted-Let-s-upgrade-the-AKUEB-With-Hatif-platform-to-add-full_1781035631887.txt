@@ -1,0 +1,22 @@
+Let's upgrade the "AKUEB With Hatif" platform to add full Operator controls, file management, and UI improvements. Please implement the following features across the entire application:
+
+1. Global Operator Role & Authentication (All Classes):
+- Create a secure login system (via an environment variable secret password or simple admin session) that grants me "Operator" status.
+- This capability must apply globally to all classes (Class 9th, 10th, 11th, and 12th) and all subject pages. 
+- Normal users must only see a read-only view. Only verified Operators can see the management buttons.
+
+2. Dynamic Material Upload, Description, & Deletion:
+- When logged in as the Operator, show an "Upload Material" section within any subject category.
+- Inside this upload form, include:
+  * A file input selector to upload study files (PDFs, docs, images) directly to the server storage.
+  * An optional text field labeled "Description (Optional)" where I can type notes or details about the resource.
+- Saved files and their optional descriptions must persist on the backend and render beautifully for students.
+- Add a visible "Delete" button next to uploaded items, visible ONLY to the Operator, allowing me to instantly wipe the file and its data off the server without writing code.
+
+3. Global Dark Mode Toggle:
+- Add a clean, accessible toggle button in the top corner of the global navigation header.
+- Clicking this button must smoothly transition the whole website's UI from our clean green-and-white theme into a dark mode alternative (dark grays/blacks with green accents), and remember the user's preference using localStorage.
+
+4. Back Navigation Buttons:
+- Add a clearly visible "← Back" button at the top left of the inner index pages (such as the subjects grid page and the materials viewing page).
+- This button should easily take the user back to the previous logical view (e.g., from a specific subject page back to the Class selection homepage) so navigation is seamless on both desktop and mobile.
