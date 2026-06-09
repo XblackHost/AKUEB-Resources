@@ -42,7 +42,7 @@ export function AdBlockerCheck() {
             </div>
             <DialogTitle className="text-center text-xl">Ad Blocker Detected</DialogTitle>
             <DialogDescription className="text-center text-base pt-2">
-              AKUEB Students Help is a free, non-profit resource built by students. We rely on minimal ads to keep the servers running and our library available to everyone.
+              AKUEB With Hatif is a free, non-profit resource built by students. We rely on minimal ads to keep the servers running and our library available to everyone.
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col gap-4 mt-6">
