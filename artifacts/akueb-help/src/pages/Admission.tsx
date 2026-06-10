@@ -78,10 +78,10 @@ export default function Admission() {
           </div>
           <h1 className="text-3xl font-serif text-foreground">Request Submitted!</h1>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            We've received your demo booking request. Our team will contact you on your WhatsApp number shortly to schedule your <span className="font-medium text-foreground">demo session</span>.
+            We've received your demo booking request. Our team will contact you on your WhatsApp number shortly to schedule your <span className="font-medium text-foreground">free demo session</span>.
           </p>
           <p className="text-sm text-muted-foreground">
-            You decide afterwards whether to continue.
+            Remember — the demo is completely free. You decide afterwards whether to continue.
           </p>
           <Link href="/">
             <Button className="rounded-full px-8">Back to Home</Button>
@@ -117,14 +117,14 @@ export default function Admission() {
           <div className="bg-primary/10 text-primary p-2 rounded-lg">
             <GraduationCap className="h-5 w-5" />
           </div>
-          <h1 className="text-3xl font-serif text-foreground">Book a Demo</h1>
+          <h1 className="text-3xl font-serif text-foreground">Book a Free Demo</h1>
         </div>
         <p className="text-muted-foreground mb-2">
           Interested in joining Zulfiplex Academy? Fill in your details below and we'll reach out on WhatsApp to schedule your session.
         </p>
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
           <CheckCircle2 className="h-4 w-4" />
-          The demo session comes with no commitment required.
+          The demo session is completely free — no commitment required.
         </div>
 
         <Form {...form}>
@@ -258,7 +258,7 @@ export default function Admission() {
               className="w-full rounded-full"
               disabled={submitMutation.isPending}
             >
-              {submitMutation.isPending ? "Submitting..." : "Book My Demo"}
+              {submitMutation.isPending ? "Submitting..." : "Book My Free Demo"}
             </Button>
           </form>
         </Form>

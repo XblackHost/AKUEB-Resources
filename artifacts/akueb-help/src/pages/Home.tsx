@@ -36,7 +36,7 @@ export default function Home() {
               <Link href="/admission">
                 <Button size="lg" variant="outline" className="h-14 px-8 text-base rounded-full w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all font-semibold">
                   <GraduationCap className="mr-2 h-5 w-5" />
-                  Book a Demo
+                  Book a Free Demo
                 </Button>
               </Link>
             </div>
@@ -161,14 +161,14 @@ export default function Home() {
 
           <div className="bg-card border border-primary/20 rounded-2xl p-8 text-center shadow-sm">
             <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">Experience our teaching first</p>
-            <h3 className="text-2xl font-serif text-foreground mb-3">Start with a demo class.</h3>
+            <h3 className="text-2xl font-serif text-foreground mb-3">Start with a free demo class.</h3>
             <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
               Attend a demo session to experience our teaching style. Only continue if you feel it's the right fit for you.
             </p>
             <Link href="/admission">
               <Button size="lg" className="rounded-full px-10 shadow-md text-base font-semibold">
                 <GraduationCap className="mr-2 h-5 w-5" />
-                Book My Demo
+                Book My Free Demo
               </Button>
             </Link>
           </div>
