@@ -20,11 +20,12 @@ const NEXT_STATUS: Record<string, string> = {
 };
 
 export default function AdminAdmissions() {
-  const { isAdmin } = useAdmin();
+  const { isAdmin, adminToken } = useAdmin();
   const { toast } = useToast();
 
   const { data: admissions, isLoading, refetch } = useListAdmissions({
     query: { enabled: isAdmin },
+    request: { headers: { Authorization: `Bearer ${adminToken}` } },
   });
 
   const updateStatus = useUpdateAdmissionStatus({
@@ -34,6 +35,7 @@ export default function AdminAdmissions() {
         toast({ title: "Status updated" });
       },
     },
+    request: { headers: { Authorization: `Bearer ${adminToken}` } },
   });
 
   const deleteRequest = useDeleteAdmission({
@@ -43,6 +45,7 @@ export default function AdminAdmissions() {
         toast({ title: "Request deleted" });
       },
     },
+    request: { headers: { Authorization: `Bearer ${adminToken}` } },
   });
 
   if (!isAdmin) {

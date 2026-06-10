@@ -1,13 +1,12 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { BookOpen, ArrowRight, CheckCircle2 } from "lucide-react";
+import { BookOpen, ArrowRight, CheckCircle2, GraduationCap, Star, Users, BookMarked } from "lucide-react";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-24 pb-32 overflow-hidden">
-        {/* Decorative background blob */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-primary/5 rounded-[100%] blur-3xl -z-10 pointer-events-none" />
         
         <div className="container mx-auto px-4 max-w-5xl">
@@ -33,6 +32,12 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
+              <Link href="/admission">
+                <Button size="lg" variant="outline" className="h-14 px-8 text-base rounded-full w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all font-semibold">
+                  <GraduationCap className="mr-2 h-5 w-5" />
+                  Book a Free Demo
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -45,7 +50,6 @@ export default function Home() {
           className="w-full max-w-[728px] h-[90px] bg-muted border border-border/50 rounded-lg flex items-center justify-center text-muted-foreground/50 text-xs font-medium uppercase tracking-widest relative overflow-hidden"
         >
           <span className="relative z-10">Advertisement</span>
-          {/* Subtle pattern for the ad placeholder */}
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)", backgroundPosition: "0 0, 10px 10px", backgroundSize: "20px 20px" }}></div>
         </div>
       </div>
@@ -76,7 +80,6 @@ export default function Home() {
             </div>
             
             <div className="bg-muted rounded-2xl p-8 aspect-square flex items-center justify-center relative border border-border/50 shadow-sm">
-              {/* Illustration placeholder */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl"></div>
               <div className="w-48 h-64 bg-card rounded-xl shadow-lg border border-border/50 rotate-[-6deg] absolute left-12 flex flex-col p-4 z-10">
                 <div className="w-1/2 h-2 bg-muted rounded-full mb-4"></div>
@@ -98,8 +101,69 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Academy / Admission Section */}
+      <section className="py-24 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3 -z-10" />
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <GraduationCap className="h-4 w-4" />
+              <span>Now enrolling — limited spots</span>
+            </div>
+            <h2 className="text-4xl font-serif text-foreground mb-4">
+              Learn directly from <span className="text-primary italic">specialized teachers.</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+              Beyond the free study resources, we offer personalized academy classes for AKUEB students taught by experienced, subject-specialized instructors who know the exam inside out.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6 mb-12">
+            {[
+              {
+                icon: <Star className="h-6 w-6 text-primary" />,
+                title: "Subject Specialists",
+                desc: "Each subject — Mathematics, Biology, Physics, Chemistry — is taught by a dedicated expert, not a general tutor.",
+              },
+              {
+                icon: <Users className="h-6 w-6 text-primary" />,
+                title: "Small Batch Sizes",
+                desc: "Limited students per batch so every student gets personal attention and their questions answered every session.",
+              },
+              {
+                icon: <BookMarked className="h-6 w-6 text-primary" />,
+                title: "AKUEB-Focused",
+                desc: "All teaching is tailored to the AKUEB exam pattern — past papers, MCQs, and marking scheme strategies included.",
+              },
+            ].map((card, i) => (
+              <div key={i} className="bg-card border border-border rounded-2xl p-6 space-y-3 shadow-sm">
+                <div className="bg-primary/10 w-11 h-11 rounded-xl flex items-center justify-center">
+                  {card.icon}
+                </div>
+                <h3 className="font-semibold text-foreground">{card.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-card border border-primary/20 rounded-2xl p-8 text-center shadow-sm">
+            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">Start with zero risk</p>
+            <h3 className="text-2xl font-serif text-foreground mb-3">Your first demo class is completely free.</h3>
+            <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+              Attend a full demo session with no payment or commitment required. Only continue if you feel it's the right fit for you.
+            </p>
+            <Link href="/admission">
+              <Button size="lg" className="rounded-full px-10 shadow-md text-base font-semibold">
+                <GraduationCap className="mr-2 h-5 w-5" />
+                Book My Free Demo
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer CTA */}
-      <section className="py-24 text-center px-4">
+      <section className="py-24 text-center px-4 border-t border-border">
         <h2 className="text-3xl font-serif mb-6">Ready to start studying?</h2>
         <Link href="/classes">
           <Button size="lg" className="rounded-full shadow-md">

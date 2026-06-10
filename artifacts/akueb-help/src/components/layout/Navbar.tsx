@@ -30,20 +30,22 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <Link href="/classes" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+        <div className="flex items-center gap-3">
+          <Link href="/classes" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-2">
             Browse Classes
           </Link>
 
-          <Link href="/admission" className="flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-            <GraduationCap className="h-4 w-4" />
-            Admission
+          <Link href="/admission">
+            <Button size="sm" variant="default" className="rounded-full px-4 gap-1.5 bg-primary shadow-sm font-semibold">
+              <GraduationCap className="h-4 w-4" />
+              Book a Demo
+            </Button>
           </Link>
 
           {isAdmin && (
             <Link
               href="/admin/admissions"
-              className="text-xs font-medium bg-primary/10 text-primary px-3 py-1.5 rounded-full hover:bg-primary/20 transition-colors"
+              className="text-xs font-medium bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400 px-3 py-1.5 rounded-full hover:opacity-80 transition-opacity"
             >
               Requests
             </Link>
@@ -78,7 +80,7 @@ export function Navbar() {
                 Log in
               </Link>
               <Link href="/register">
-                <Button size="sm" className="font-medium">
+                <Button size="sm" variant="outline" className="font-medium">
                   Register
                 </Button>
               </Link>
