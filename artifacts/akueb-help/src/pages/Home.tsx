@@ -36,7 +36,7 @@ export default function Home() {
               <Link href="/admission">
                 <Button size="lg" variant="outline" className="h-14 px-8 text-base rounded-full w-full sm:w-auto border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all font-semibold">
                   <GraduationCap className="mr-2 h-5 w-5" />
-                  Book a Free Demo
+                  Book a Demo
                 </Button>
               </Link>
             </div>
@@ -67,7 +67,6 @@ export default function Home() {
               
               <ul className="space-y-4 pt-4">
                 {[
-                  "100% free and non-profit",
                   "Specifically curated for AKUEB",
                   "Notes, past papers, and MCQs",
                   "Clean, distraction-free reading"
@@ -128,7 +127,7 @@ export default function Home() {
               Learn directly from <span className="text-primary italic">specialized teachers.</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Beyond the free study resources, we offer personalized academy classes for AKUEB students taught by experienced, subject-specialized instructors who know the exam inside out.
+              Alongside our study resources, we offer personalized academy classes for AKUEB students taught by experienced, subject-specialized instructors who know the exam inside out.
             </p>
           </div>
 
@@ -161,15 +160,15 @@ export default function Home() {
           </div>
 
           <div className="bg-card border border-primary/20 rounded-2xl p-8 text-center shadow-sm">
-            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">Start with zero risk</p>
-            <h3 className="text-2xl font-serif text-foreground mb-3">Your first demo class is completely free.</h3>
+            <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">Experience our teaching first</p>
+            <h3 className="text-2xl font-serif text-foreground mb-3">Start with a demo class.</h3>
             <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-              Attend a full demo session with no payment or commitment required. Only continue if you feel it's the right fit for you.
+              Attend a demo session to experience our teaching style. Only continue if you feel it's the right fit for you.
             </p>
             <Link href="/admission">
               <Button size="lg" className="rounded-full px-10 shadow-md text-base font-semibold">
                 <GraduationCap className="mr-2 h-5 w-5" />
-                Book My Free Demo
+                Book My Demo
               </Button>
             </Link>
           </div>
