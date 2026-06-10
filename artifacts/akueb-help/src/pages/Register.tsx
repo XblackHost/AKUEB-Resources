@@ -34,7 +34,7 @@ export default function Register() {
     mutation: {
       onSuccess: (data) => {
         login(data.token, data.user);
-        toast({ title: "Account created", description: "Welcome to AKUEB With Hatif." });
+        toast({ title: "Account created", description: "Welcome to AKUEB Resources." });
         setLocation("/");
       },
       onError: (error) => {

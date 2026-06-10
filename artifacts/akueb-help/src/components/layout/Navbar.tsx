@@ -24,7 +24,7 @@ export function Navbar() {
             <BookOpen className="h-5 w-5" />
           </div>
           <span className="font-serif font-semibold text-lg text-foreground tracking-tight">
-            AKUEB With Hatif
+            AKUEB Resources
           </span>
         </Link>
 

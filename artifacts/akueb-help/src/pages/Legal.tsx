@@ -26,7 +26,7 @@ export default function Legal() {
           <section>
             <h2 className="text-xl font-semibold mb-3 text-foreground">1. Disclaimer of Affiliation</h2>
             <p className="text-muted-foreground leading-relaxed">
-              This website, <span className="font-medium text-foreground">AKUEB With Hatif</span>, is an independent, student-run educational platform. It is <span className="font-semibold text-foreground">not affiliated with, endorsed by, sponsored by, or officially connected to</span> the Aga Khan University Examination Board (AKUEB), the Aga Khan University, the Aga Khan Development Network, or any of their subsidiaries, departments, or affiliated institutions in any way.
+              This website, <span className="font-medium text-foreground">AKUEB Resources</span>, is an independent, student-run educational platform. It is <span className="font-semibold text-foreground">not affiliated with, endorsed by, sponsored by, or officially connected to</span> the Aga Khan University Examination Board (AKUEB), the Aga Khan University, the Aga Khan Development Network, or any of their subsidiaries, departments, or affiliated institutions in any way.
             </p>
             <p className="text-muted-foreground leading-relaxed mt-3">
               All references to "AKUEB" on this platform are used solely for descriptive and informational purposes — to identify the examination board whose curriculum this platform's study materials relate to. No sponsorship or official relationship is implied or should be inferred.
@@ -104,7 +104,7 @@ export default function Legal() {
           <section>
             <h2 className="text-xl font-semibold mb-3 text-foreground">7. Limitation of Liability</h2>
             <p className="text-muted-foreground leading-relaxed">
-              To the fullest extent permitted by applicable law, the operators of AKUEB With Hatif shall not be liable for any direct, indirect, incidental, consequential, or special damages arising from your use of or inability to use this platform or its contents, including but not limited to academic performance outcomes, data loss, or reliance on any material found here.
+              To the fullest extent permitted by applicable law, the operators of AKUEB Resources shall not be liable for any direct, indirect, incidental, consequential, or special damages arising from your use of or inability to use this platform or its contents, including but not limited to academic performance outcomes, data loss, or reliance on any material found here.
             </p>
           </section>
 
@@ -119,7 +119,7 @@ export default function Legal() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-border text-center text-sm text-muted-foreground">
-          <p>AKUEB With Hatif — an independent student resource platform.</p>
+          <p>AKUEB Resources — an independent student resource platform.</p>
           <p className="mt-1">Not affiliated with AKUEB or any of its related organisations.</p>
         </div>
       </div>

@@ -10,7 +10,7 @@ export function Footer() {
             <div className="bg-primary text-primary-foreground p-1 rounded-md">
               <BookOpen className="h-4 w-4" />
             </div>
-            <span className="font-serif font-semibold text-sm text-foreground">AKUEB With Hatif</span>
+            <span className="font-serif font-semibold text-sm text-foreground">AKUEB Resources</span>
           </div>
 
           <p className="text-xs text-muted-foreground text-center sm:text-left">
