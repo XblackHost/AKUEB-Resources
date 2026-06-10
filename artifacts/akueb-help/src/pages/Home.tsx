@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { BookOpen, ArrowRight, CheckCircle2, GraduationCap, Star, Users, BookMarked } from "lucide-react";
+import zulfiplexLogo from "../assets/zulfiplex-logo.png";
 
 export default function Home() {
   return (
@@ -106,6 +107,19 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/3 -z-10" />
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
+            {/* Zulfiplex Academy logo + name */}
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <img
+                src={zulfiplexLogo}
+                alt="Zulfiplex Academy"
+                className="w-16 h-16 rounded-full object-cover ring-4 ring-primary/15 shadow-md"
+              />
+              <div className="text-left">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary">Presented by</p>
+                <p className="text-xl font-serif font-semibold text-foreground">Zulfiplex Academy</p>
+              </div>
+            </div>
+
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               <GraduationCap className="h-4 w-4" />
               <span>Now enrolling — limited spots</span>

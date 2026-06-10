@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { GraduationCap, CheckCircle2, ArrowLeft } from "lucide-react";
+import zulfiplexLogo from "../assets/zulfiplex-logo.png";
 
 const SUBJECTS = ["Mathematics", "Biology", "Physics", "Chemistry"] as const;
 const GRADES = ["9th", "10th", "11th", "12th"] as const;
@@ -98,6 +99,20 @@ export default function Admission() {
           Back to Home
         </Link>
 
+        {/* Academy branding */}
+        <div className="flex items-center gap-4 mb-5 p-4 bg-card border border-border rounded-2xl shadow-sm">
+          <img
+            src={zulfiplexLogo}
+            alt="Zulfiplex Academy"
+            className="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-primary/20"
+          />
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-0.5">Academy Admissions</p>
+            <h2 className="text-lg font-serif font-semibold text-foreground leading-tight">Zulfiplex Academy</h2>
+            <p className="text-xs text-muted-foreground">Subject-specialist tutoring for AKUEB Classes 9–12</p>
+          </div>
+        </div>
+
         <div className="flex items-center gap-3 mb-2">
           <div className="bg-primary/10 text-primary p-2 rounded-lg">
             <GraduationCap className="h-5 w-5" />
@@ -105,7 +120,7 @@ export default function Admission() {
           <h1 className="text-3xl font-serif text-foreground">Book a Free Demo</h1>
         </div>
         <p className="text-muted-foreground mb-2">
-          Interested in joining our academy? Fill in your details below and we'll reach out on WhatsApp to schedule your session.
+          Interested in joining Zulfiplex Academy? Fill in your details below and we'll reach out on WhatsApp to schedule your session.
         </p>
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8">
           <CheckCircle2 className="h-4 w-4" />
