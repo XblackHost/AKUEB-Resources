@@ -240,6 +240,80 @@ export const DeleteMaterialParams = zod.object({
 
 
 /**
+ * @summary Submit an academy admission request
+ */
+export const submitAdmissionBodyFullNameMin = 2;
+
+export const submitAdmissionBodyAgeMin = 10;
+export const submitAdmissionBodyAgeMax = 25;
+
+export const submitAdmissionBodySchoolNameMin = 2;
+
+export const submitAdmissionBodyWhatsappNumberMin = 7;
+
+
+
+
+export const SubmitAdmissionBody = zod.object({
+  "fullName": zod.string().min(submitAdmissionBodyFullNameMin),
+  "age": zod.number().min(submitAdmissionBodyAgeMin).max(submitAdmissionBodyAgeMax),
+  "schoolName": zod.string().min(submitAdmissionBodySchoolNameMin),
+  "grade": zod.enum(['9th', '10th', '11th', '12th']),
+  "whatsappNumber": zod.string().min(submitAdmissionBodyWhatsappNumberMin),
+  "subjects": zod.array(zod.enum(['Mathematics', 'Biology', 'Physics', 'Chemistry'])).min(1)
+})
+
+
+/**
+ * @summary List all admission requests (operator only)
+ */
+export const ListAdmissionsResponseItem = zod.object({
+  "id": zod.number(),
+  "fullName": zod.string(),
+  "age": zod.number(),
+  "schoolName": zod.string(),
+  "grade": zod.string(),
+  "whatsappNumber": zod.string(),
+  "subjects": zod.array(zod.string()),
+  "status": zod.string(),
+  "createdAt": zod.string()
+})
+export const ListAdmissionsResponse = zod.array(ListAdmissionsResponseItem)
+
+
+/**
+ * @summary Update admission request status (operator only)
+ */
+export const UpdateAdmissionStatusParams = zod.object({
+  "admissionId": zod.coerce.number()
+})
+
+export const UpdateAdmissionStatusBody = zod.object({
+  "status": zod.enum(['pending', 'contacted', 'enrolled', 'rejected'])
+})
+
+export const UpdateAdmissionStatusResponse = zod.object({
+  "id": zod.number(),
+  "fullName": zod.string(),
+  "age": zod.number(),
+  "schoolName": zod.string(),
+  "grade": zod.string(),
+  "whatsappNumber": zod.string(),
+  "subjects": zod.array(zod.string()),
+  "status": zod.string(),
+  "createdAt": zod.string()
+})
+
+
+/**
+ * @summary Delete an admission request (operator only)
+ */
+export const DeleteAdmissionParams = zod.object({
+  "admissionId": zod.coerce.number()
+})
+
+
+/**
  * @summary Request a presigned URL for file upload
  */
 

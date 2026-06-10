@@ -120,6 +120,69 @@ export interface UploadUrlRequest {
   contentType: string;
 }
 
+export interface AdmissionRequest {
+  id: number;
+  fullName: string;
+  age: number;
+  schoolName: string;
+  grade: string;
+  whatsappNumber: string;
+  subjects: string[];
+  status: string;
+  createdAt: string;
+}
+
+export type CreateAdmissionRequestBodyGrade = typeof CreateAdmissionRequestBodyGrade[keyof typeof CreateAdmissionRequestBodyGrade];
+
+
+export const CreateAdmissionRequestBodyGrade = {
+  '9th': '9th',
+  '10th': '10th',
+  '11th': '11th',
+  '12th': '12th',
+} as const;
+
+export type CreateAdmissionRequestBodySubjectsItem = typeof CreateAdmissionRequestBodySubjectsItem[keyof typeof CreateAdmissionRequestBodySubjectsItem];
+
+
+export const CreateAdmissionRequestBodySubjectsItem = {
+  Mathematics: 'Mathematics',
+  Biology: 'Biology',
+  Physics: 'Physics',
+  Chemistry: 'Chemistry',
+} as const;
+
+export interface CreateAdmissionRequestBody {
+  /** @minLength 2 */
+  fullName: string;
+  /**
+     * @minimum 10
+     * @maximum 25
+     */
+  age: number;
+  /** @minLength 2 */
+  schoolName: string;
+  grade: CreateAdmissionRequestBodyGrade;
+  /** @minLength 7 */
+  whatsappNumber: string;
+  /** @minItems 1 */
+  subjects: CreateAdmissionRequestBodySubjectsItem[];
+}
+
+export type UpdateAdmissionStatusBodyStatus = typeof UpdateAdmissionStatusBodyStatus[keyof typeof UpdateAdmissionStatusBodyStatus];
+
+
+export const UpdateAdmissionStatusBodyStatus = {
+  pending: 'pending',
+  contacted: 'contacted',
+  enrolled: 'enrolled',
+  rejected: 'rejected',
+} as const;
+
+export interface UpdateAdmissionStatusBody {
+  status: UpdateAdmissionStatusBodyStatus;
+}
+
 export interface UploadUrlResponse {
   uploadURL: string;
   objectPath: string;

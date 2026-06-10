@@ -1,4 +1,4 @@
-import { pgTable, text, serial, integer } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
@@ -38,3 +38,19 @@ export type Subject = typeof subjectsTable.$inferSelect;
 export const insertMaterialSchema = createInsertSchema(materialsTable).omit({ id: true });
 export type InsertMaterial = z.infer<typeof insertMaterialSchema>;
 export type Material = typeof materialsTable.$inferSelect;
+
+export const admissionRequestsTable = pgTable("admission_requests", {
+  id: serial("id").primaryKey(),
+  fullName: text("full_name").notNull(),
+  age: integer("age").notNull(),
+  schoolName: text("school_name").notNull(),
+  grade: text("grade").notNull(),
+  whatsappNumber: text("whatsapp_number").notNull(),
+  subjects: text("subjects").array().notNull(),
+  status: text("status").notNull().default("pending"),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+});
+
+export const insertAdmissionRequestSchema = createInsertSchema(admissionRequestsTable).omit({ id: true, status: true, createdAt: true });
+export type InsertAdmissionRequest = z.infer<typeof insertAdmissionRequestSchema>;
+export type AdmissionRequest = typeof admissionRequestsTable.$inferSelect;

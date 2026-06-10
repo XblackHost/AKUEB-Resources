@@ -17,6 +17,8 @@ tags:
     description: Operator-only management operations
   - name: storage
     description: Object storage upload and serving endpoints
+  - name: admissions
+    description: Academy admission request operations
 paths:
   /healthz:
     get:
@@ -417,6 +419,116 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /admissions:
+    post:
+      operationId: submitAdmission
+      tags: [admissions]
+      summary: Submit an academy admission request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAdmissionRequestBody"
+      responses:
+        "201":
+          description: Admission request submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdmissionRequest"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /admin/admissions:
+    get:
+      operationId: listAdmissions
+      tags: [admin]
+      summary: List all admission requests (operator only)
+      responses:
+        "200":
+          description: List of admission requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AdmissionRequest"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /admin/admissions/{admissionId}/status:
+    patch:
+      operationId: updateAdmissionStatus
+      tags: [admin]
+      summary: Update admission request status (operator only)
+      parameters:
+        - name: admissionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAdmissionStatusBody"
+      responses:
+        "200":
+          description: Status updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdmissionRequest"
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /admin/admissions/{admissionId}:
+    delete:
+      operationId: deleteAdmission
+      tags: [admin]
+      summary: Delete an admission request (operator only)
+      parameters:
+        - name: admissionId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Deleted
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   /storage/uploads/request-url:
     post:
       tags: [storage]
@@ -667,6 +779,66 @@ components:
         contentType:
           type: string
           minLength: 1
+
+    AdmissionRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+        fullName:
+          type: string
+        age:
+          type: integer
+        schoolName:
+          type: string
+        grade:
+          type: string
+        whatsappNumber:
+          type: string
+        subjects:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+      required: [id, fullName, age, schoolName, grade, whatsappNumber, subjects, status, createdAt]
+
+    CreateAdmissionRequestBody:
+      type: object
+      properties:
+        fullName:
+          type: string
+          minLength: 2
+        age:
+          type: integer
+          minimum: 10
+          maximum: 25
+        schoolName:
+          type: string
+          minLength: 2
+        grade:
+          type: string
+          enum: ["9th", "10th", "11th", "12th"]
+        whatsappNumber:
+          type: string
+          minLength: 7
+        subjects:
+          type: array
+          items:
+            type: string
+            enum: [Mathematics, Biology, Physics, Chemistry]
+          minItems: 1
+      required: [fullName, age, schoolName, grade, whatsappNumber, subjects]
+
+    UpdateAdmissionStatusBody:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: ["pending", "contacted", "enrolled", "rejected"]
+      required: [status]
 
     UploadUrlResponse:
       type: object

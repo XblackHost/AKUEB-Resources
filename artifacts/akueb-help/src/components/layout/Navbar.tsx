@@ -1,13 +1,15 @@
 import { Link } from "wouter";
-import { BookOpen, LogOut, User as UserIcon, Moon, Sun } from "lucide-react";
+import { BookOpen, LogOut, User as UserIcon, Moon, Sun, GraduationCap } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAdmin } from "@/contexts/AdminContext";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "@workspace/api-client-react";
 
 export function Navbar() {
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const { isAdmin } = useAdmin();
   const logoutMutation = useLogout({
     mutation: {
       onSuccess: () => {
@@ -32,8 +34,22 @@ export function Navbar() {
           <Link href="/classes" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Browse Classes
           </Link>
-          
-          <div className="h-4 w-px bg-border mx-2" />
+
+          <Link href="/admission" className="flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+            <GraduationCap className="h-4 w-4" />
+            Admission
+          </Link>
+
+          {isAdmin && (
+            <Link
+              href="/admin/admissions"
+              className="text-xs font-medium bg-primary/10 text-primary px-3 py-1.5 rounded-full hover:bg-primary/20 transition-colors"
+            >
+              Requests
+            </Link>
+          )}
+
+          <div className="h-4 w-px bg-border mx-1" />
 
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-muted-foreground hover:text-foreground">
             {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
@@ -45,9 +61,9 @@ export function Navbar() {
                 <UserIcon className="h-4 w-4 text-primary" />
                 {user.name}
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 onClick={() => logoutMutation.mutate()}
                 disabled={logoutMutation.isPending}
                 className="text-muted-foreground hover:text-foreground"

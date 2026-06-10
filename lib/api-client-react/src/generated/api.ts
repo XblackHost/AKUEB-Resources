@@ -21,8 +21,10 @@ import type {
 
 import type {
   AdminAuthResponse,
+  AdmissionRequest,
   AuthResponse,
   Class,
+  CreateAdmissionRequestBody,
   CreateMaterialBody,
   CreateSubjectBody,
   ErrorResponse,
@@ -32,6 +34,7 @@ import type {
   RegisterBody,
   Subject,
   SuccessResponse,
+  UpdateAdmissionStatusBody,
   UpdateMaterialBody,
   UpdateSubjectBody,
   UploadUrlRequest,
@@ -1145,6 +1148,296 @@ export const useDeleteMaterial = <TError = ErrorType<ErrorResponse>,
         TContext
       > => {
       return useMutation(getDeleteMaterialMutationOptions(options));
+    }
+
+export const getSubmitAdmissionUrl = () => {
+
+
+
+
+  return `/api/admissions`
+}
+
+/**
+ * @summary Submit an academy admission request
+ */
+export const submitAdmission = async (createAdmissionRequestBody: CreateAdmissionRequestBody, options?: RequestInit): Promise<AdmissionRequest> => {
+
+  return customFetch<AdmissionRequest>(getSubmitAdmissionUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      createAdmissionRequestBody,)
+  }
+);}
+
+
+
+
+export const getSubmitAdmissionMutationOptions = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof submitAdmission>>, TError,{data: BodyType<CreateAdmissionRequestBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof submitAdmission>>, TError,{data: BodyType<CreateAdmissionRequestBody>}, TContext> => {
+
+const mutationKey = ['submitAdmission'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof submitAdmission>>, {data: BodyType<CreateAdmissionRequestBody>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  submitAdmission(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type SubmitAdmissionMutationResult = NonNullable<Awaited<ReturnType<typeof submitAdmission>>>
+    export type SubmitAdmissionMutationBody = BodyType<CreateAdmissionRequestBody>
+    export type SubmitAdmissionMutationError = ErrorType<ErrorResponse>
+
+    /**
+ * @summary Submit an academy admission request
+ */
+export const useSubmitAdmission = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof submitAdmission>>, TError,{data: BodyType<CreateAdmissionRequestBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof submitAdmission>>,
+        TError,
+        {data: BodyType<CreateAdmissionRequestBody>},
+        TContext
+      > => {
+      return useMutation(getSubmitAdmissionMutationOptions(options));
+    }
+
+export const getListAdmissionsUrl = () => {
+
+
+
+
+  return `/api/admin/admissions`
+}
+
+/**
+ * @summary List all admission requests (operator only)
+ */
+export const listAdmissions = async ( options?: RequestInit): Promise<AdmissionRequest[]> => {
+
+  return customFetch<AdmissionRequest[]>(getListAdmissionsUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListAdmissionsQueryKey = () => {
+    return [
+    `/api/admin/admissions`
+    ] as const;
+    }
+
+
+export const getListAdmissionsQueryOptions = <TData = Awaited<ReturnType<typeof listAdmissions>>, TError = ErrorType<ErrorResponse>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAdmissions>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListAdmissionsQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listAdmissions>>> = ({ signal }) => listAdmissions({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listAdmissions>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListAdmissionsQueryResult = NonNullable<Awaited<ReturnType<typeof listAdmissions>>>
+export type ListAdmissionsQueryError = ErrorType<ErrorResponse>
+
+
+/**
+ * @summary List all admission requests (operator only)
+ */
+
+export function useListAdmissions<TData = Awaited<ReturnType<typeof listAdmissions>>, TError = ErrorType<ErrorResponse>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listAdmissions>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListAdmissionsQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
+export const getUpdateAdmissionStatusUrl = (admissionId: number,) => {
+
+
+
+
+  return `/api/admin/admissions/${admissionId}/status`
+}
+
+/**
+ * @summary Update admission request status (operator only)
+ */
+export const updateAdmissionStatus = async (admissionId: number,
+    updateAdmissionStatusBody: UpdateAdmissionStatusBody, options?: RequestInit): Promise<AdmissionRequest> => {
+
+  return customFetch<AdmissionRequest>(getUpdateAdmissionStatusUrl(admissionId),
+  {
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(
+      updateAdmissionStatusBody,)
+  }
+);}
+
+
+
+
+export const getUpdateAdmissionStatusMutationOptions = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateAdmissionStatus>>, TError,{admissionId: number;data: BodyType<UpdateAdmissionStatusBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateAdmissionStatus>>, TError,{admissionId: number;data: BodyType<UpdateAdmissionStatusBody>}, TContext> => {
+
+const mutationKey = ['updateAdmissionStatus'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateAdmissionStatus>>, {admissionId: number;data: BodyType<UpdateAdmissionStatusBody>}> = (props) => {
+          const {admissionId,data} = props ?? {};
+
+          return  updateAdmissionStatus(admissionId,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateAdmissionStatusMutationResult = NonNullable<Awaited<ReturnType<typeof updateAdmissionStatus>>>
+    export type UpdateAdmissionStatusMutationBody = BodyType<UpdateAdmissionStatusBody>
+    export type UpdateAdmissionStatusMutationError = ErrorType<ErrorResponse>
+
+    /**
+ * @summary Update admission request status (operator only)
+ */
+export const useUpdateAdmissionStatus = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateAdmissionStatus>>, TError,{admissionId: number;data: BodyType<UpdateAdmissionStatusBody>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateAdmissionStatus>>,
+        TError,
+        {admissionId: number;data: BodyType<UpdateAdmissionStatusBody>},
+        TContext
+      > => {
+      return useMutation(getUpdateAdmissionStatusMutationOptions(options));
+    }
+
+export const getDeleteAdmissionUrl = (admissionId: number,) => {
+
+
+
+
+  return `/api/admin/admissions/${admissionId}`
+}
+
+/**
+ * @summary Delete an admission request (operator only)
+ */
+export const deleteAdmission = async (admissionId: number, options?: RequestInit): Promise<void> => {
+
+  return customFetch<void>(getDeleteAdmissionUrl(admissionId),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+export const getDeleteAdmissionMutationOptions = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteAdmission>>, TError,{admissionId: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteAdmission>>, TError,{admissionId: number}, TContext> => {
+
+const mutationKey = ['deleteAdmission'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteAdmission>>, {admissionId: number}> = (props) => {
+          const {admissionId} = props ?? {};
+
+          return  deleteAdmission(admissionId,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteAdmissionMutationResult = NonNullable<Awaited<ReturnType<typeof deleteAdmission>>>
+
+    export type DeleteAdmissionMutationError = ErrorType<ErrorResponse>
+
+    /**
+ * @summary Delete an admission request (operator only)
+ */
+export const useDeleteAdmission = <TError = ErrorType<ErrorResponse>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteAdmission>>, TError,{admissionId: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteAdmission>>,
+        TError,
+        {admissionId: number},
+        TContext
+      > => {
+      return useMutation(getDeleteAdmissionMutationOptions(options));
     }
 
 export const getRequestUploadUrlUrl = () => {

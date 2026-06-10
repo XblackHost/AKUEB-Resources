@@ -18,6 +18,8 @@ import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import AdminLogin from "@/pages/AdminLogin";
 import Legal from "@/pages/Legal";
+import Admission from "@/pages/Admission";
+import AdminAdmissions from "@/pages/AdminAdmissions";
 
 const queryClient = new QueryClient();
 
@@ -35,7 +37,9 @@ function Router() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/admin/login" component={AdminLogin} />
+          <Route path="/admin/admissions" component={AdminAdmissions} />
           <Route path="/legal" component={Legal} />
+          <Route path="/admission" component={Admission} />
           <Route component={NotFound} />
         </Switch>
       </main>
