@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { BookOpen, ArrowRight, CheckCircle2, GraduationCap, Star, Users, BookMarked } from "lucide-react";
 import zulfiplexLogo from "../assets/zulfiplex-logo.png";
+import { AdBanner } from "@/components/layout/AdBanner";
 
 export default function Home() {
   return (
@@ -45,15 +46,7 @@ export default function Home() {
       </section>
 
       {/* Top Ad Slot */}
-      <div className="container mx-auto px-4 py-8 flex justify-center">
-        <div 
-          id="ad-top" 
-          className="w-full max-w-[728px] h-[90px] bg-muted border border-border/50 rounded-lg flex items-center justify-center text-muted-foreground/50 text-xs font-medium uppercase tracking-widest relative overflow-hidden"
-        >
-          <span className="relative z-10">Advertisement</span>
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000)", backgroundPosition: "0 0, 10px 10px", backgroundSize: "20px 20px" }}></div>
-        </div>
-      </div>
+      <AdBanner />
 
       {/* About Section */}
       <section className="py-24 bg-card border-y border-border">
