@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AdminProvider } from "@/contexts/AdminContext";
 import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import { AdBlockerCheck } from "@/components/layout/AdBlockerCheck";
 
 import Home from "@/pages/Home";
@@ -16,6 +17,7 @@ import Materials from "@/pages/Materials";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import AdminLogin from "@/pages/AdminLogin";
+import Legal from "@/pages/Legal";
 
 const queryClient = new QueryClient();
 
@@ -33,9 +35,11 @@ function Router() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/admin/login" component={AdminLogin} />
+          <Route path="/legal" component={Legal} />
           <Route component={NotFound} />
         </Switch>
       </main>
+      <Footer />
     </div>
   );
 }
