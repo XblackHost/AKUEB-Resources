@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,19 +23,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fix absolute asset paths for GitHub Pages
-        run: |
-          # This converts source paths starting with '/' to '.' so they load relatively
-          sed -i 's|href="/|href="./|g' artifacts/akueb-help/index.html
-          sed -i 's|src="/|src="./|g' artifacts/akueb-help/index.html
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Application
+        # This compiles the TypeScript into pure JS and fixes the base URL path automatically
+        run: npx vite build --base=/AKUEB-Resources/
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Upload compiled artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'artifacts/akueb-help/'
+          # We upload the translated production folder, NOT the raw code
+          path: 'dist/'
 
       - name: Deploy to GitHub Pages
         id: deployment
