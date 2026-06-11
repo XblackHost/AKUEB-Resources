@@ -2,10 +2,10 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches: ["main"] # Change to "master" if your default branch is named master
+    branches: ["main"]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -17,8 +17,12 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps: deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,12 +33,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This tells GitHub exactly where your index.html is located
           path: 'artifacts/akueb-help/'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-# making a useless line to make github reload the file
-        
