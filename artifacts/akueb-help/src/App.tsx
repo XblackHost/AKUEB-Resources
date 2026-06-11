@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AdminProvider } from "@/contexts/AdminContext";
 import { Navbar } from "@/components/layout/Navbar";
@@ -14,8 +13,6 @@ import Home from "@/pages/Home";
 import Classes from "@/pages/Classes";
 import Subjects from "@/pages/Subjects";
 import Materials from "@/pages/Materials";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
 import AdminLogin from "@/pages/AdminLogin";
 import Legal from "@/pages/Legal";
 import Admission from "@/pages/Admission";
@@ -34,8 +31,6 @@ function Router() {
           <Route path="/classes" component={Classes} />
           <Route path="/classes/:classId/subjects" component={Subjects} />
           <Route path="/subjects/:subjectId/materials" component={Materials} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
           <Route path="/admin/login" component={AdminLogin} />
           <Route path="/admin/admissions" component={AdminAdmissions} />
           <Route path="/legal" component={Legal} />
@@ -53,14 +48,12 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <AdminProvider>
-          <AuthProvider>
-            <TooltipProvider>
-              <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-                <Router />
-              </WouterRouter>
-              <Toaster />
-            </TooltipProvider>
-          </AuthProvider>
+          <TooltipProvider>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+            <Toaster />
+          </TooltipProvider>
         </AdminProvider>
       </ThemeProvider>
     </QueryClientProvider>

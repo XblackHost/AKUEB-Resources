@@ -1,22 +1,12 @@
 import { Link } from "wouter";
-import { BookOpen, LogOut, User as UserIcon, Moon, Sun, GraduationCap } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
+import { BookOpen, Moon, Sun, GraduationCap } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAdmin } from "@/contexts/AdminContext";
 import { Button } from "@/components/ui/button";
-import { useLogout } from "@workspace/api-client-react";
 
 export function Navbar() {
-  const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const { isAdmin } = useAdmin();
-  const logoutMutation = useLogout({
-    mutation: {
-      onSuccess: () => {
-        logout();
-      }
-    }
-  });
 
   return (
     <nav className="border-b border-border bg-card/80 backdrop-blur-md sticky top-0 z-40">
@@ -56,36 +46,6 @@ export function Navbar() {
           <Button variant="ghost" size="icon" onClick={toggleTheme} className="text-muted-foreground hover:text-foreground">
             {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
           </Button>
-
-          {user ? (
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 text-sm font-medium text-foreground bg-accent/50 px-3 py-1.5 rounded-full">
-                <UserIcon className="h-4 w-4 text-primary" />
-                {user.name}
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => logoutMutation.mutate()}
-                disabled={logoutMutation.isPending}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <LogOut className="h-4 w-4 mr-2" />
-                Logout
-              </Button>
-            </div>
-          ) : (
-            <div className="flex items-center gap-2">
-              <Link href="/login" className="text-sm font-medium text-foreground hover:text-primary transition-colors px-3 py-2">
-                Log in
-              </Link>
-              <Link href="/register">
-                <Button size="sm" variant="outline" className="font-medium">
-                  Register
-                </Button>
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     </nav>
